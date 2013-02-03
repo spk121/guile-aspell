@@ -1,0 +1,134 @@
+\input texinfo @c -*- Mode: texinfo; Fill-column: 70; coding: utf-8 -*-
+@c %**start of header
+@setfilename guile-aspell.info
+@include version.texi
+@settitle GuCu @value{VERSION}
+
+@syncodeindex fn cp
+@syncodeindex vr cp
+@syncodeindex ky cp
+@syncodeindex pg cp
+@syncodeindex tp cp
+
+@c %**end of header
+
+
+@copying
+This manual is for guile-aspell (version @value{VERSION},
+@value{UPDATED}).  This library provides bindings for the Aspell
+library, which provides spellchecking functionality.
+
+Copyright @copyright{} 2009 Michael L. Gran
+
+@quotation
+
+This is free documentation.  Yadda yadda yadda. Insert license.
+
+@end quotation
+@end copying
+
+@titlepage
+@title guile-aspell
+@subtitle For version @value{VERSION}, @value{UPDATED}
+@author Michael L. Gran
+
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@summarycontents
+
+@contents
+
+@ifnottex
+@node Top, Reference, (dir), (dir)
+@top guile-aspell
+@insertcopying
+@end ifnottex
+
+@menu
+* Reference::                   
+* Index::                       
+
+@end menu
+
+@node Reference, Index, Top, Top
+@chapter Reference
+
+The Aspell library provides spell checking functionality.
+
+To use this library, first the module must be imported, like this:
+@example
+(use-modules (aspell aspell))
+@end example
+
+Then, before any attempt to use it for spell checking, a dictionary
+must be chosen.  If the @code{aspell} command line tool was installed
+when the Aspell library was installed, the available dictionaries can
+be listed from the command line by using the @code{aspell dump dicts}
+command.
+
+To set the library, use the @code{aspell-set-lang} procedure.
+
+@deffn Procedure aspell-set-lang lang
+Sets the dictionary for this aspell session to @var{lang}, where
+@var{lang} is a string containing a the standard two letter ISO 639
+language code, with an optional two letter ISO 3166 country code after
+an underscore.  It must match one of the installed dictionaries, as
+described above.
+
+You may call this function at any time, but, each call will cause the
+library to forget any words added to the default speller using
+@code{aspell-add-word}.
+@end deffn
+
+A program may have one or more spellers.  A speller hold a list of
+words temporarily added to the dictionary using @code{aspell-add-word}
+as well as a list of suggested replacements added using
+@code{aspell-store-replacement}.  A default speller is created when
+the library is loaded, and extra spellers can be made using
+@code{aspell-new-speller}.  The rest of the procedures will take an
+optional speller argument.  If the optional speller argument is not
+supplied, the default speller is used instead.
+
+@deffn Procedure aspell-new-speller
+Returns a new speller, of the opaque type @code{#<speller>}.  A
+speller stores words temporarily added to the dictionary for this
+session, as well as suggested word replacement pairs.
+@end deffn
+
+@deffn Procedure aspell-speller? x
+Returns @code{#t} if @var{x} is a @code{#<speller>} type.
+@end deffn
+
+With that out of the way, we can get down to business.
+
+@deffn Procedure aspell-correct? word [speller]
+Returns @code{#t} if @var{word} appears in the current dictionary, or
+@code{#f} otherwise. If @var{speller} is supplied, its list of added
+words is used.
+@end deffn
+
+@deffn Procedure aspell-word word [speller]
+Returns a list of words that are possible spelling corrections to
+@var{word}. If @var{speller} is supplied, its list of added words and
+suggested replacements is used.
+@end deffn
+
+@deffn Procedure aspell-add-word word [speller]
+Adds the word @var{word} to the dictionary for this session.  If
+@var{speller} is supplied, it adds it to the dictionary for that
+speller, otherwise it adds it to the default dictionary.
+@end deffn
+
+@deffn Procedure aspell-store-replacement misspelled correct [speller]
+This make the correctly spelled word the preferred replacement for a
+given mispelled word.  If a speller is supplied, it adds this pair to
+that speller, otherwise it adds it to the default list.
+@end deffn
+
+@node Index,  , Reference, Top
+@unnumbered Index
+@printindex cp
+@bye
