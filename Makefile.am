@@ -1,3 +1,21 @@
+# Copyright 2009, 2013 Michael L Gran
+
+# This file is part of guile-aspell.
+
+# guile-aspell is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# guile-aspell is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with guile-aspell.  If not, see <http://www.gnu.org/licenses/>.
+
+
 ## Process this file with automake to produce Makefile.in
 ACLOCAL_AMFLAGS = -I m4
 
@@ -12,29 +30,30 @@ WARN_FLAGS = -std=c99 -pedantic -Wall                                   \
 -Wchar-subscripts -Winline -Wnested-externs -Wredundant-decls -Wunused	\
 -Wformat=2
 else
-WARN_FLAGS = 
+WARN_FLAGS =
 endif
 
-AM_CFLAGS = $(WARN_FLAGS) $(GUILE_CFLAGS)
+AM_CFLAGS = $(WARN_FLAGS) $(GUILE_CFLAGS) $(CFLAG_VISIBILITY)
+AM_CPPFLAGS = -DBUILDING_GUILE_ASPELL
 
 # Set version flags and indicate that this is meant to be dlopened
-libguile_aspell_la_LDFLAGS = \
+aspell_libguile_aspell_la_LDFLAGS = \
 	$(GUILE_LDFLAGS) \
 	-module \
 	-no-undefined \
-	-version-info @LIBGUILE_ASPELL_INTERFACE@
+	-version-info $(LIBGUILE_ASPELL_INTERFACE)
 
 
 ### MAIN TARGETS ###
 
 guileextension_LTLIBRARIES = \
-	libguile_aspell.la
+	aspell/libguile_aspell.la
 dist_guilesite_DATA = \
 	aspell/aspell.scm
 
 ### SOURCES ###
 
-libguile_aspell_la_SOURCES = \
+aspell_libguile_aspell_la_SOURCES = \
 	aspell/gu_aspell.c \
 	aspell/gu_aspell.h
 
@@ -47,20 +66,19 @@ distclean-local: clean-GNUmakefile
 clean-GNUmakefile:
 	test '$(srcdir)' = . || rm -f $(top_builddir)/GNUmakefile
 
-
 ### CHECK ###
 
 # TESTLIB = \
-# 	test/lib.scm \
-# 	test/lib2.scm
+#	test/lib.scm \
+#	test/lib2.scm
 
 # TESTS_ENVIRONMENT = GUILE_AUTO_COMPILE=0 \
-# 	./libtool -dlopen aspell/libguile_aspell.la \
-# 	--mode=execute \
-# 	guile -L $(abs_top_srcdir) -s 
+#	./libtool -dlopen aspell/libguile_aspell.la \
+#	--mode=execute \
+#	guile -L $(abs_top_srcdir) -s
 
 # TESTS = \
-# 	test/aspell_test.test 
+#	test/aspell_test.test
 
 ### DOCUMENTATION ###
 
@@ -77,11 +95,8 @@ clean-GNUmakefile:
 
 info_TEXINFOS = \
 	doc/guile-aspell.texi
-doc_gucu_TEXINFOS = \
-	doc/example1.scm 
 
 SUBDIRS = lib
-
 
 ### DISTRIBUTION ###
 
@@ -91,9 +106,10 @@ EXTRA_DIST = \
 	NEWS \
 	README \
 	COPYING \
-        m4/gnulib-cache.m4
+	m4/gnulib-cache.m4 \
+	doc/fdl-1.3.texi
+
 #	$(TESTLIB) \
 #	$(TESTS)
 
 ### INSTALLATION ###
-
