@@ -1,1 +1,6 @@
+For Release 0.1 - Feb 7, 2013
 
+    - Fixed bug where default speller was GC'd
+    - Removed mark functions so to work guile-2.0 with a bdw-gc that
+      has parallel marks
+    - Added some configure support for Guile extension dir
