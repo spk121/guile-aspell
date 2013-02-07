@@ -75,8 +75,6 @@ AM_CONDITIONAL([FORCE_TEX_TO_TEX], [test "$force_tex_to_tex" = yes])
 
 GUILE_FLAGS
 GUILE_SITE_DIR
-GUILE_EXTENSION_DIR=`pkg-config guile-2.0 --variable=extensiondir`
-AC_SUBST([GUILE_EXTENSION_DIR])
 
 AC_ARG_WITH([guilesitedir],
   [use the specified installation path for Guile scheme modules],
@@ -105,6 +103,11 @@ if test "x$guileextensiondir" = "x"; then
 fi
 AC_SUBST([guileextensiondir])
 
+GUILE_EXTENSION_DIR=`pkg-config guile-2.0 --variable=extensiondir`
+if test "x$GUILE_EXTENSION_DIR" = "x"; then
+GUILE_EXTENSION_DIR=`guile-config info libdir`
+fi
+AC_SUBST([GUILE_EXTENSION_DIR])
 
 AC_CHECK_LIB([aspell],
              [new_aspell_config], ,
@@ -145,9 +148,11 @@ if test "$guilesitedir" != "$GUILE_SITE"; then
    [variable.])
 fi
 
+if test "x$GUILE_EXTENSION_DIR" != "x"; then
 if test "$guileextensiondir" != "$GUILE_EXTENSION_DIR"; then
    AC_MSG_WARN([]
    [The Guile extensions will be installed in ${guileextensiondir}.]
    [You should consider re-running `configure' with]
    [`--with-guileextensiondir=$GUILE_EXTENSION_DIR'])
+fi
 fi
