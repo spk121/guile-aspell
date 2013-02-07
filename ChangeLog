@@ -1,5 +1,11 @@
 2013-02-07  Mike Gran  <spk121@yahoo.com>
 
+	Fix title of manual
+	* doc/guile-aspell.texi: modify title
+
+	Update ChangeLog
+	* ChangeLog: updated
+
 	Include ChangeLog in distribution
 	* Makefile.am (EXTRA_DIST): add ChangeLog
 
