@@ -1,5 +1,8 @@
 2013-02-07  Mike Gran  <spk121@yahoo.com>
 
+	Distribute cfg.mk
+	* Makefile.am (EXTRA_DIST): add cfg.mk
+
 	Update ChangeLog
 	* ChangeLog
 

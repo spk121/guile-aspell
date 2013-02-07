@@ -121,7 +121,7 @@ AM_CONDITIONAL([WARN], [test "$enable_warnings" = yes])
 
 ##################
 # Check for header files
-AC_CHECK_HEADERS([aspell.h libguile.h])
+AC_CHECK_HEADERS([aspell.h])
 
 ##################
 # Check for types, structures, compiler characteristics
