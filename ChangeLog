@@ -1,1 +1,27 @@
+2013-02-07  Mike Gran  <spk121@yahoo.com>
 
+	Remove smob mark functions
+	Smob mark functions break guile-2.0 with parallel marking
+
+	* aspell/gu_aspell.c (mark_speller): removed
+
+2013-02-07  Mike Gran  <spk121@yahoo.com>
+
+	Fix Guile extension dir tests for guile-1.8
+	* configure.ac: modified
+
+	Update AUTHORS and NEWS
+	* AUTHORS: updated
+	* NEWS: updated
+
+2013-02-03  Mike Gran  <spk121@yahoo.com>
+
+	Hack
+
+	Hack
+
+	Original Code
+
+2013-02-03  spk121  <spk121@yahoo.com>
+
+	Initial commit
