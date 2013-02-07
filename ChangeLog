@@ -1,5 +1,14 @@
 2013-02-07  Mike Gran  <spk121@yahoo.com>
 
+	Include texinfo.tex in distribution
+	* Makefile.am (EXTRA_DIST): add texinfo.tex
+
+	Update README
+	* README: updated
+
+	Update ChangeLog from git
+	* ChangeLog
+
 	Whitespace
 	* AUTHORS: modified
 	* aspell/aspell.scm: modified
