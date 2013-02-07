@@ -1,5 +1,11 @@
 2013-02-07  Mike Gran  <spk121@yahoo.com>
 
+	Include ChangeLog in distribution
+	* Makefile.am (EXTRA_DIST): add ChangeLog
+
+	Update ChangeLog
+	* ChangeLog: updated
+
 	Include texinfo.tex in distribution
 	* Makefile.am (EXTRA_DIST): add texinfo.tex
 
