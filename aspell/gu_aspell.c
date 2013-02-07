@@ -30,7 +30,6 @@
 
 static SCM equalp_speller (SCM x1, SCM x2);
 static size_t free_speller (SCM x);
-static SCM mark_speller (SCM x);
 static int print_speller (SCM x, SCM port, scm_print_state * pstate);
 static int _scm_is_speller (SCM x);
 static SCM _scm_from_speller (AspellSpeller * x);
@@ -125,13 +124,6 @@ equalp_speller (SCM x1, SCM x2)
     return SCM_BOOL_F;
   else
     return SCM_BOOL_T;
-}
-
-SCM
-mark_speller (SCM x)
-{
-  // No SCMs in the speller type: nothing to do here.
-  return (SCM_BOOL_F);
 }
 
 size_t
@@ -382,7 +374,6 @@ gu_aspell_init ()
       atexit (gu_aspell_cleanup);
 
       speller_tag = scm_make_smob_type ("speller", sizeof (AspellSpeller *));
-      // scm_set_smob_mark (speller_tag, mark_speller);
       scm_set_smob_free (speller_tag, free_speller);
       scm_set_smob_print (speller_tag, print_speller);
       scm_set_smob_equalp (speller_tag, equalp_speller);
