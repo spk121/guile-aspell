@@ -109,6 +109,7 @@ EXTRA_DIST = \
 	ChangeLog \
 	m4/gnulib-cache.m4 \
 	doc/fdl-1.3.texi \
-	build-aux/texinfo.tex
+	build-aux/texinfo.tex \
+	cfg.mk
 
 ### INSTALLATION ###

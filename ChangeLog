@@ -1,5 +1,8 @@
 2013-02-07  Mike Gran  <spk121@yahoo.com>
 
+	Update ChangeLog
+	* ChangeLog
+
 	Fix title of manual
 	* doc/guile-aspell.texi: modify title
 
