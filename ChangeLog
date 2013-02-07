@@ -1,5 +1,15 @@
 2013-02-07  Mike Gran  <spk121@yahoo.com>
 
+	Whitespace
+	* AUTHORS: modified
+	* aspell/aspell.scm: modified
+	* cfg.mk: modified
+
+	Update ChangeLog from git
+	* ChangeLog
+
+2013-02-07  Mike Gran  <spk121@yahoo.com>
+
 	Remove smob mark functions
 	Smob mark functions break guile-2.0 with parallel marking
 
