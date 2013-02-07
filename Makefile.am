@@ -107,9 +107,7 @@ EXTRA_DIST = \
 	README \
 	COPYING \
 	m4/gnulib-cache.m4 \
-	doc/fdl-1.3.texi
-
-#	$(TESTLIB) \
-#	$(TESTS)
+	doc/fdl-1.3.texi \
+	build-aux/texinfo.tex
 
 ### INSTALLATION ###
