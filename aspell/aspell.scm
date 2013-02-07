@@ -66,7 +66,6 @@ included, and the word will be added to that instance."
   (if sci
       (%aspell-add-word word sci)
       (%aspell-add-word word)))
-      
 
 (define* (aspell-store-replacement misspelled correct #:optional sci)
   "Store a new suggestion for a misspelled word.  Takes a misspelled word
@@ -75,4 +74,3 @@ and the suggestion will be added to that instance."
   (if sci
       (%aspell-store-replacement misspelled correct sci)
       (%aspell-store-replacement misspelled correct)))
-      
