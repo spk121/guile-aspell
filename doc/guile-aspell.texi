@@ -425,7 +425,7 @@
 @c %**start of header
 @setfilename guile-aspell.info
 @include version.texi
-@settitle GuCu @value{VERSION}
+@settitle Guile-Aspell @value{VERSION}
 
 @syncodeindex fn cp
 @syncodeindex vr cp
