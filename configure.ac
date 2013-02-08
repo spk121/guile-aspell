@@ -20,7 +20,7 @@
 ##################
 # Package info
 AC_PREREQ(2.61)
-AC_INIT([guile_aspell],[0.1],[spk121@yahoo.com])
+AC_INIT([guile_aspell],[0.2],[spk121@yahoo.com])
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([gnu std-options -Wall])
 AC_CONFIG_SRCDIR([config.h.in])

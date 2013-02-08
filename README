@@ -1,4 +1,4 @@
-README for guile-aspell 0.1
+README for guile-aspell 0.2
 
 guile aspell is a spellcheck module for Guile. GNU Guile is an
 implementation of Scheme, a Lisp-like computer language, and this
