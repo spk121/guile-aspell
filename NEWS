@@ -1,5 +1,9 @@
-For Release 0.2 - TBD
+For Release 0.3 - Oct 30, 2016
+    - Use FFI and drop compiled Guile extension module
+    - Bump gnulib and autoconfigury
 
+For Release 0.2 - ???
+    - ???
 
 For Release 0.1 - Feb 7, 2013
 

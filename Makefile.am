@@ -1,4 +1,4 @@
-# Copyright 2009, 2013 Michael L Gran
+# Copyright 2009, 2013, 2016 Michael L Gran
 
 # This file is part of guile-aspell.
 
@@ -21,41 +21,12 @@ ACLOCAL_AMFLAGS = -I m4
 
 ### FLAGS ###
 
-# -Wextra depends on the gcc version
-
-if WARN
-WARN_FLAGS = -std=c99 -pedantic -Wall                                   \
--Wstrict-prototypes -Wmissing-prototypes -Wpointer-arith -Wreturn-type	\
--Wcast-qual -Wswitch -Wshadow -Wcast-align -Wwrite-strings		\
--Wchar-subscripts -Winline -Wnested-externs -Wredundant-decls -Wunused	\
--Wformat=2
-else
-WARN_FLAGS =
-endif
-
-AM_CFLAGS = $(WARN_FLAGS) $(GUILE_CFLAGS) $(CFLAG_VISIBILITY)
-AM_CPPFLAGS = -DBUILDING_GUILE_ASPELL
-
-# Set version flags and indicate that this is meant to be dlopened
-aspell_libguile_aspell_la_LDFLAGS = \
-	$(GUILE_LDFLAGS) \
-	-module \
-	-no-undefined \
-	-version-info $(LIBGUILE_ASPELL_INTERFACE)
-
-
 ### MAIN TARGETS ###
 
-guileextension_LTLIBRARIES = \
-	aspell/libguile_aspell.la
 dist_guilesite_DATA = \
 	aspell/aspell.scm
 
 ### SOURCES ###
-
-aspell_libguile_aspell_la_SOURCES = \
-	aspell/gu_aspell.c \
-	aspell/gu_aspell.h
 
 ### LINKER ###
 
@@ -73,8 +44,6 @@ clean-GNUmakefile:
 #	test/lib2.scm
 
 # TESTS_ENVIRONMENT = GUILE_AUTO_COMPILE=0 \
-#	./libtool -dlopen aspell/libguile_aspell.la \
-#	--mode=execute \
 #	guile -L $(abs_top_srcdir) -s
 
 # TESTS = \

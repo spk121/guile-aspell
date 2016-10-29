@@ -440,7 +440,7 @@ This manual is for guile-aspell (version @value{VERSION},
 @value{UPDATED}).  This library provides bindings for the Aspell
 library, which provides spellchecking functionality.
 
-Copyright @copyright{} 2009, 2013 Michael L. Gran
+Copyright @copyright{} 2009, 2013, 2016 Michael L. Gran
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -504,9 +504,9 @@ language code, with an optional two letter ISO 3166 country code after
 an underscore.  It must match one of the installed dictionaries, as
 described above.
 
-You may call this function at any time, but, each call will cause the
-library to forget any words added to the default speller using
-@code{aspell-add-word}.
+You may call this function at any time, but, each time the language is
+changed, it will cause any words added to the
+default speller using @code{aspell-add-word} to be forgotten.
 @end deffn
 
 A program may have one or more spellers.  A speller hold a list of
@@ -537,21 +537,24 @@ words is used.
 @end deffn
 
 @deffn Procedure aspell-word word [speller]
-Returns a list of words that are possible spelling corrections to
-@var{word}. If @var{speller} is supplied, its list of added words and
-suggested replacements is used.
+This procedure returns a list of words that are possible spelling
+corrections to @var{word}. If @var{speller} is supplied, that
+speller's list of added words and suggested replacements is used.
 @end deffn
 
 @deffn Procedure aspell-add-word word [speller]
-Adds the word @var{word} to the dictionary for this session.  If
-@var{speller} is supplied, it adds it to the dictionary for that
-speller, otherwise it adds it to the default dictionary.
+This procedure adds the word @var{word} to the dictionary for this
+session.  If @var{speller} is supplied, it adds it to the dictionary
+for that speller, otherwise it adds it to the default dictionary.
 @end deffn
 
 @deffn Procedure aspell-store-replacement misspelled correct [speller]
-This make the correctly spelled word the preferred replacement for a
-given mispelled word.  If a speller is supplied, it adds this pair to
-that speller, otherwise it adds it to the default list.
+This makes the correctly spelled word the preferred replacement for a
+given mispelled word.  In a list of suggested corrections supplied by
+@code{aspell-word}, @var{correct} will appear with high priority when
+@code{aspell-word} is called with @var{mistake}. If a speller is
+supplied, it adds this suggestion to that speller, otherwise it adds
+it to the default list.
 @end deffn
 
 @node  GNU Free Documentation License, Index, Reference, Top

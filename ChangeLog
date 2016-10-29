@@ -1,4 +1,15 @@
+2013-02-08  Mike Gran  <spk121@yahoo.com>
+
+	Post-release bump to version 0.2
+	* NEWS: now 0.2
+	* README: now 0.2
+	* configure.ac: now 0.2
+	* README.md: removed
+
 2013-02-07  Mike Gran  <spk121@yahoo.com>
+
+	Remove unnecessary configure check for libguile.h
+	* configure.ac: libguile.h test removed
 
 	Distribute cfg.mk
 	* Makefile.am (EXTRA_DIST): add cfg.mk
