@@ -1,3 +1,15 @@
+2016-10-29  Michael Gran  <spk121@yahoo.com>
+
+	Move to ffi bindings
+	* README: bump version number
+	* Makefile.am: remove C compilation functionality
+	* aspell/aspell.scm: rewrite completely to use ffi
+	* bootstrap: bump revision
+	* bootstrap.conf: bump revision
+	* configure.ac: bump revision and remove all compilation
+	* doc/guile-aspell.texi: bump revision and some clarifications
+	* NEWS: update
+
 2013-02-08  Mike Gran  <spk121@yahoo.com>
 
 	Post-release bump to version 0.2
