@@ -24,7 +24,7 @@ ACLOCAL_AMFLAGS = -I m4
 ### MAIN TARGETS ###
 
 dist_guilesite_DATA = \
-	aspell/aspell.scm
+	aspell.scm
 
 ### SOURCES ###
 
