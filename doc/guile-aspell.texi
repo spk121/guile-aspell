@@ -440,7 +440,7 @@ This manual is for guile-aspell (version @value{VERSION},
 @value{UPDATED}).  This library provides bindings for the Aspell
 library, which provides spellchecking functionality.
 
-Copyright @copyright{} 2009, 2013, 2016 Michael L. Gran
+Copyright @copyright{} 2009, 2013, 2016, 2017 Michael L. Gran
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
