@@ -1,4 +1,30 @@
+2017-04-05  Mike Gran  <spk121@yahoo.com>
+
+	syntax check nits
+
+	release trivia
+
+	add direntry for texinfo manual
+
+	move aspell.scm out of its subdirectory
+	* Makefile.am: modified
+	* aspell/aspell.scm -> aspell.scm
+
+	No error or return val for aspell-add-replacement
+
+	Some doc fixes
+	* doc/guile-aspell.texi: modified
+
+	Bump revision
+
 2016-10-29  Michael Gran  <spk121@yahoo.com>
+
+	Remove c sources
+	* aspell/gu_aspell.c: removed
+	* aspell/gu_aspell.h: removed
+
+	Update changelog
+	* ChangeLog: updated
 
 	Move to ffi bindings
 	* README: bump version number
