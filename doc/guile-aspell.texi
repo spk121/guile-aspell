@@ -452,6 +452,11 @@ Free Documentation License".
 @end quotation
 @end copying
 
+@dircategory The Algorithmic Language Scheme
+@direntry
+* Guile Aspell: (guile-aspell).     A spellchecker library for Guile.
+@end direntry
+
 @titlepage
 @title guile-aspell
 @subtitle For version @value{VERSION}, @value{UPDATED}
