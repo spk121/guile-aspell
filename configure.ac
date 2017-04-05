@@ -58,6 +58,7 @@ AM_CONDITIONAL([FORCE_TEX_TO_TEX], [test "$force_tex_to_tex" = yes])
 ##################
 # Check for libraries
 
+GUILE_PKG([2.2 2.0])
 GUILE_PROGS
 GUILE_SITE_DIR
 
