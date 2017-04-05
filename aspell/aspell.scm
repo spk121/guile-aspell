@@ -1,6 +1,6 @@
 ;; -*- Mode: scheme; -*-
 
-;; Copyright 2009, 2013, 2016 Michael L Gran
+;; Copyright 2009, 2013, 2016, 2017 Michael L Gran
 
 ;; This file is part of guile-aspell.
 
@@ -308,7 +308,7 @@ or \"es_MX\".  It also resets the language for the default spellcheck instance."
 	  (if (= 0 ret)
 	      (error (aspell-config-error-message *spell-config*))
 	      ;; else
-	      ;; Because we're changing languagesr, reboot the speller.
+	      ;; Because we're changing languages, reboot the speller.
 	      (let ([possible-err (new-aspell-speller *spell-config*)])
 		(if (not (= 0 (aspell-error-number possible-err)))
 		    (error (aspell-error-message possible-err))
@@ -353,7 +353,5 @@ included, and the word will be added to that instance."
   "Store a new suggestion for a misspelled word.  Takes a misspelled word
 and the corrected version.  Optionally, a spellcheck instance can be included,
 and the suggestion will be added to that instance."
-  (let ([ret (aspell-speller-store-replacement sci misspelled correct)])
-    (if (= 0 ret)
-	(error (aspell-speller-error-message sci))
-	#t)))
+  (aspell-speller-store-replacement sci misspelled correct)
+  *unspecified*)

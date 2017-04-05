@@ -561,6 +561,8 @@ given mispelled word.  In a list of suggested corrections supplied by
 @code{aspell-word} is called with @var{mistake}. If a speller is
 supplied, it adds this suggestion to that speller, otherwise it adds
 it to the default list.
+
+The return value is unspecified.
 @end deffn
 
 @node  GNU Free Documentation License, Index, Reference, Top

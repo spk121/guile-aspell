@@ -1,3 +1,6 @@
+For Release 0.4 - ???
+    - aspell-store-replacement's return value is now unspecified.
+
 For Release 0.3 - Oct 30, 2016
     - Use FFI and drop compiled Guile extension module
     - Bump gnulib and autoconfigury
