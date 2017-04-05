@@ -1,6 +1,6 @@
 # Process this file with autoconf to produce a configure script
 
-# Copyright 2009, 2013, 2016 Michael L Gran
+# Copyright 2009, 2013, 2016, 2017 Michael L Gran
 
 # This file is part of guile-aspell.
 
@@ -20,7 +20,7 @@
 ##################
 # Package info
 AC_PREREQ(2.61)
-AC_INIT([guile_aspell],[0.3],[spk121@yahoo.com])
+AC_INIT([guile_aspell],[0.4],[spk121@yahoo.com])
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([gnu std-options -Wall])
 # AC_CONFIG_SRCDIR([config.h.in])
@@ -40,8 +40,9 @@ AC_PROG_MKDIR_P
 #################
 # Gnulib stuff
 gl_INIT
-AC_CONFIG_COMMANDS_PRE([m4_ifdef([AH_HEADER],
-  [AC_SUBST([CONFIG_INCLUDE], m4_defn([AH_HEADER]))])])
+
+# AC_CONFIG_COMMANDS_PRE([m4_ifdef([AH_HEADER],
+#  [AC_SUBST([CONFIG_INCLUDE], m4_defn([AH_HEADER]))])])
 
 ##################
 # Initial guess of platform specific options
@@ -74,6 +75,12 @@ if test "x$guilesitedir" = "x"; then
 fi
 AC_SUBST([guilesitedir])
 
+# PKG_CHECK_MODULES(ASPELL, aspell)
+# AC_SUBST(ASPELL_CFLAGS)
+# AC_SUBST(ASPELL_LIBS)
+
+# On success, this should append -laspell to LIBS and define
+# HAVE_LIBASPELL.
 AC_CHECK_LIB([aspell],
              [new_aspell_config], ,
              # if aspell is not ok
