@@ -1,5 +1,11 @@
 2017-04-05  Mike Gran  <spk121@yahoo.com>
 
+	More pre-release nits
+
+	call out GUILE_PKG 2.2 in configure
+
+	update ChangeLog
+
 	syntax check nits
 
 	release trivia
