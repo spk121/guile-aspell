@@ -501,31 +501,37 @@ To set the library, use the @code{aspell-set-lang} procedure.
 Sets the dictionary for this aspell session to @var{lang}, where
 @var{lang} is a string containing a the standard two letter ISO 639
 language code, with an optional two letter ISO 3166 country code after
-an underscore.  It must match one of the installed dictionaries, as
+an underscore.  For example, @var{lang} could be @code{"en_US"} or
+@code{"en_GB"} or perhaps simply @code{"es"}. The @var{lang} string
+must match the name one of aspell's installed dictionaries, as
 described above.
 
 You may call this function at any time, but, each time the language is
 changed, it will cause any words added to the
 default speller using @code{aspell-add-word} to be forgotten.
+
+On success, the procedure will return @code{#t}.  On failure, it will
+throw an error.
 @end deffn
 
-A program may have one or more spellers.  A speller hold a list of
-words temporarily added to the dictionary using @code{aspell-add-word}
-as well as a list of suggested replacements added using
-@code{aspell-store-replacement}.  A default speller is created when
-the library is loaded, and extra spellers can be made using
-@code{aspell-new-speller}.  The rest of the procedures will take an
-optional speller argument.  If the optional speller argument is not
+A program may have one or more @emph{spellers}.  A speller holds a
+list of words temporarily added to the dictionary using
+@code{aspell-add-word} as well as a list of suggested replacements
+added using @code{aspell-store-replacement}.  A default speller is
+created when the library is loaded, and extra spellers can be made
+using @code{aspell-new-speller}.  The rest of the procedures will take
+an optional speller argument.  If the optional speller argument is not
 supplied, the default speller is used instead.
 
 @deffn Procedure aspell-new-speller
-Returns a new speller, of the opaque type @code{#<speller>}.  A
-speller stores words temporarily added to the dictionary for this
-session, as well as suggested word replacement pairs.
+This procedure returns a new speller of the type
+@code{#<AspellSpeller>}.  A speller stores words temporarily added to
+the dictionary for this session, as well as suggested word replacement
+pairs.
 @end deffn
 
 @deffn Procedure aspell-speller? x
-Returns @code{#t} if @var{x} is a @code{#<speller>} type.
+Returns @code{#t} if @var{x} is a @code{#<AspellSpeller>} type.
 @end deffn
 
 With that out of the way, we can get down to business.
