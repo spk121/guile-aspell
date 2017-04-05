@@ -1,4 +1,16 @@
 /build-aux
+Makefile
+Makefile.in
+aclocal.m4
+autom4te.cache/
+config.log
+config.status
+configure
+doc/stamp-vti
+doc/version.texi
+doc/.gitignore
+doc/.dirstamp
+
 # Object files
 *.o
 

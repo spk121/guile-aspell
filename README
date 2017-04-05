@@ -1,4 +1,4 @@
-README for guile-aspell 0.3
+README for guile-aspell 0.4
 
 guile aspell is a spellcheck module for Guile. GNU Guile is an
 implementation of Scheme, a Lisp-like computer language, and this
@@ -6,16 +6,27 @@ spellcheck library provides facilites to check strings against a
 dictionary and to suggest alternate words. It uses functionality
 provided by the GNU Aspell spellcheck library.
 
+For more information try..
+website: http://lonelycactus.com/guile-aspell.html
+github:  https://github.com/spk121/guile-aspell
+email: Mike Gran <spk121@yahoo.com>
+twitter: @MikeSpike3
+
 You can install it using the typical
 
  ./configure
  make
  make install
 
-Or you can just copy aspell/aspell.scm into the Guile site directory.
+Installing the module this way will install both the Scheme library
+and the Texinfo documentation.
+
+Or, you can just copy the aspell.scm file into the Guile site
+directory.
 
 For information on how to use the many superfluous and strange options
 available to you in the "configure" script, see the INSTALL file.
 
 The terms under which this software is provided is in the file
 COPYING.
+
