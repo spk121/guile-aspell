@@ -34,7 +34,37 @@
 	    aspell-word
 ))
 
-(define libaspell (dynamic-link "libaspell"))
+(define (find-cygwin-dll prefix)
+  (let ((dirstream (false-if-exception (opendir "/usr/bin")))
+	(extension ".dll")
+	(short-name (string-append prefix ".dll"))
+	(hyphen-prefix (string-append prefix "-")))
+    (let ((hyphen-prefix-len (string-length hyphen-prefix))
+	  (extension-len (string-length extension))
+	  (short-name-len (string-length short-name)))
+      (if (not dirstream)
+	  (error "Cannot find appropriate dll")
+	  ;; else
+	  (let loop ((cur (readdir dirstream)))
+	    (cond
+	     ((eof-object? cur)
+	      ;; Could not find a versioned dll for this prefix
+	      short-name)
+	     ((and
+	       (>= (string-length cur) short-name-len)
+	       (string= cur hyphen-prefix 0 hyphen-prefix-len)
+	       (string= cur extension (- (string-length cur) extension-len)))
+	      ;; A likely candidate
+	      cur)
+	     (else (loop (readdir dirstream)))))))))
+
+(define libaspell
+  (cond
+   ((string-contains %host-type "cygwin")
+    ;; As of 2021-11-30, the standard Cygwin dll is /usr/bin/cygaspell-15.dll.
+    (dynamic-link (find-cygwin-dll "cygaspell")))
+   (else
+    (dynamic-link "libaspell"))))
 
 ;; These are the special type conversions for libaspell
 (define-wrapped-pointer-type AspellCanHaveError
