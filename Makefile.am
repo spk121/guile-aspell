@@ -77,6 +77,8 @@ EXTRA_DIST = \
 	ChangeLog \
 	aspell.scm.in \
 	doc/fdl-1.3.texi \
-	build-aux/texinfo.tex
+	build-aux/texinfo.tex \
+	build-aux/config.guess \
+	build-aux/config.sub
 
 ### INSTALLATION ###

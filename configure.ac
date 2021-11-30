@@ -25,6 +25,7 @@ AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([gnu -Wall])
 AC_CONFIG_SRCDIR([aspell.scm.in])
 AC_CONFIG_MACRO_DIR([m4])
+AC_CANONICAL_HOST
 
 ##################
 # Check for Programs
