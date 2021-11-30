@@ -20,7 +20,7 @@
 ##################
 # Package info
 AC_PREREQ([2.64])
-AC_INIT([guile_aspell],[0.4],[spk121@yahoo.com])
+AC_INIT([guile_aspell],[0.5.0],[spk121@yahoo.com])
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([gnu -Wall])
 AC_CONFIG_SRCDIR([aspell.scm])
@@ -45,7 +45,7 @@ gl_INIT
 ##################
 # Check for libraries
 
-GUILE_PKG([2.2 2.0])
+GUILE_PKG([3.0 2.2 2.0])
 GUILE_PROGS
 GUILE_SITE_DIR
 
@@ -57,11 +57,25 @@ AC_ARG_WITH([guilesitedir],
    esac],
   [guilesitedir=""])
 
-pkgdatadir="$datadir/$PACKAGE_NAME"
+pkgdatadir="$datadir/guile/site/$GUILE_EFFECTIVE_VERSION"
 if test "x$guilesitedir" = "x"; then
   guilesitedir="$pkgdatadir"
 fi
 AC_SUBST([guilesitedir])
+
+AC_ARG_WITH([guilecachedir],
+  [use the specified installation path for compiled Guile scheme modules],
+  [case "x$withval" in
+    xyes|xno) guilecachedir="";;
+    *)        guilecachedir="$withval";;
+   esac],
+  [guilecachedir=""])
+
+pkgcachedir="$libdir/guile/$GUILE_EFFECTIVE_VERSION/site-ccache"
+if test "x$guilecachedir" = "x"; then
+  guilecachedir="$pkgcachedir"
+fi
+AC_SUBST([guilecachedir])
 
 # PKG_CHECK_MODULES(ASPELL, aspell)
 # AC_SUBST(ASPELL_CFLAGS)
@@ -89,15 +103,4 @@ AC_CHECK_LIB([aspell],
 ##################
 #  Output
 AC_CONFIG_FILES([Makefile lib/Makefile])
-
 AC_OUTPUT
-
-if test "$guilesitedir" != "$GUILE_SITE"; then
-   # Guile has a different prefix than this module
-   AC_MSG_WARN([]
-   [The Guile modules will be installed in ${guilesitedir}.]
-   [You should consider re-running `configure' with]
-   [`--with-guilesitedir=$GUILE_SITE']
-   [Otherwise, you will have to adjust the `GUILE_LOAD_PATH' environment]
-   [variable.])
-fi
