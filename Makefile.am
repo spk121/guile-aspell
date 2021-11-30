@@ -67,6 +67,11 @@ test: check
 
 ### DOCUMENTATION ###
 
+# Prefer using HTML as our distcheck documentation target, rather than
+# DVI, because for some of our automated builds, downloading texlive
+# or basictex takes a fair amount of time.
+AM_DISTCHECK_DVI_TARGET = html
+
 info_TEXINFOS = \
 	doc/guile-aspell.texi
 

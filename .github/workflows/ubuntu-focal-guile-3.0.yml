@@ -47,7 +47,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: tarball
-        path: guile_gi*tar
+        path: guile_aspell*tar
     - name: Archive test logs
       uses: actions/upload-artifact@v2
       with:
