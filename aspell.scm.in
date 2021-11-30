@@ -270,15 +270,6 @@
 (define (new-aspell-config)
   (wrap-AspellConfig (%new-aspell-config)))
 
-;; delete_aspell_config
-;;    void delete_aspell_config(struct AspellConfig * ths)
-(define %delete-aspell-config
-  (pointer->procedure void
-		      (dynamic-func "delete_aspell_config" libaspell)
-		      (list '*)))
-(define (delete-aspell-config ths)
-  (%delete-aspell-config (unwrap-AspellConfig ths)))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (define *spell-config* (new-aspell-config))
