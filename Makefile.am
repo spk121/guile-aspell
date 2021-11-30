@@ -1,4 +1,4 @@
-# Copyright 2009, 2013, 2016 Michael L Gran
+# Copyright 2009, 2013, 2016, 2021 Michael L Gran
 
 # This file is part of guile-aspell.
 
@@ -50,17 +50,6 @@ clean-GNUmakefile:
 #	test/aspell_test.test
 
 ### DOCUMENTATION ###
-
-# Cygwin's texi2dvi can try to call etex, resulting in this error:
-#   "texinfo.tex appears to be broken, quitting"
-# The problem lies in Cygwin's etex.fmt file
-# Forcing TEX to tex works around this problem
-# This should not harm other platforms
-
-#if FORCE_TEX_TO_TEX
-#TEX=tex
-#TEXI2DVI= TEX=${TEX} texi2dvi
-#endif
 
 info_TEXINFOS = \
 	doc/guile-aspell.texi

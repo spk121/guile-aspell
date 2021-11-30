@@ -1,6 +1,6 @@
 # Process this file with autoconf to produce a configure script
 
-# Copyright 2009, 2013, 2016, 2017 Michael L Gran
+# Copyright 2009, 2013, 2016, 2017, 2021 Michael L Gran
 
 # This file is part of guile-aspell.
 
@@ -23,8 +23,7 @@ AC_PREREQ([2.64])
 AC_INIT([guile_aspell],[0.4],[spk121@yahoo.com])
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([gnu std-options -Wall])
-# AC_CONFIG_SRCDIR([config.h.in])
-# AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_SRCDIR([aspell.scm])
 AC_CONFIG_MACRO_DIR([m4])
 
 ##################
@@ -32,7 +31,6 @@ AC_CONFIG_MACRO_DIR([m4])
 
 gl_EARLY
 
-AC_CANONICAL_HOST
 AC_PROG_INSTALL
 
 AC_PROG_MKDIR_P
@@ -43,17 +41,6 @@ gl_INIT
 
 # AC_CONFIG_COMMANDS_PRE([m4_ifdef([AH_HEADER],
 #  [AC_SUBST([CONFIG_INCLUDE], m4_defn([AH_HEADER]))])])
-
-##################
-# Initial guess of platform specific options
-case $host in
-*-*-cygwin)
-        [force_tex_to_tex=yes] ;;
-*)
-        [force_tex_to_tex=no] ;;
-esac
-
-AM_CONDITIONAL([FORCE_TEX_TO_TEX], [test "$force_tex_to_tex" = yes])
 
 ##################
 # Check for libraries
