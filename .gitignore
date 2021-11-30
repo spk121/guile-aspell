@@ -2,13 +2,35 @@ Makefile
 Makefile.in
 aclocal.m4
 autom4te.cache/
+build-aux/compile
+build-aux/install-sh
+build-aux/mdate-sh
+build-aux/missing
+build-aux/texinfo.tex
 config.log
 config.status
 configure
+doc/.dirstamp
 doc/stamp-vti
 doc/version.texi
-doc/.gitignore
-doc/.dirstamp
+pre-inst-env
+
+# Temp files
+*~
+\#*
+.\#*
+*.tar
+*.gz
+*.trs
+*.log
+
+# Documents
+*.info
+*.html
+*.dvi
+*.pdf
+*.ps
+*.eps
 
 # Object files
 *.o
@@ -27,5 +49,3 @@ doc/.dirstamp
 *.exe
 *.out
 *.app
-/GNUmakefile
-/maint.mk
