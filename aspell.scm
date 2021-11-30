@@ -34,7 +34,7 @@
 	    aspell-word
 ))
 
-(define libaspell (dynamic-link "@ASPELL_LIBDIR@/libaspell"))
+(define libaspell (dynamic-link "libaspell"))
 
 ;; These are the special type conversions for libaspell
 (define-wrapped-pointer-type AspellCanHaveError

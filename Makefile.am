@@ -80,7 +80,7 @@ EXTRA_DIST = \
 	COPYING \
 	ChangeLog \
 	pre-inst-env.in \
-	aspell.scm.in \
+	$(SOURCES) \
 	doc/fdl-1.3.texi \
 	build-aux/texinfo.tex \
 	build-aux/config.guess \

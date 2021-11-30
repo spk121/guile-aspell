@@ -23,7 +23,7 @@ AC_PREREQ([2.64])
 AC_INIT([guile_aspell],[0.5.0],[spk121@yahoo.com])
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([gnu -Wall])
-AC_CONFIG_SRCDIR([aspell.scm.in])
+AC_CONFIG_SRCDIR([aspell.scm])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CANONICAL_HOST
 
@@ -68,14 +68,10 @@ if test "x$guilecachedir" = "x"; then
 fi
 AC_SUBST([guilecachedir])
 
-PKG_CHECK_MODULES([ASPELL], [aspell])
-AC_MSG_CHECKING([libaspell library path])
-PKG_CHECK_VAR([ASPELL_LIBDIR],[aspell],[libdir])
-AS_IF([test "x$ASPELL_LIBDIR" = "x"], [
-      AC_MSG_FAILURE([Unable to identify the libaspell library path.])
-])
-AC_SUBST([ASPELL_LIBDIR])
-AC_MSG_RESULT([$ASPELL_LIBDIR])
+AC_CHECK_LIB([aspell],
+             [new_aspell_config], ,
+             # if aspell is not ok
+             [AC_MSG_ERROR([libaspell not found])])
 
 ##################
 # Check for header files
@@ -96,7 +92,7 @@ fi
 
 ##################
 #  Output
-AC_CONFIG_FILES([Makefile aspell.scm])
+AC_CONFIG_FILES([Makefile])
 AC_CONFIG_FILES([pre-inst-env], [chmod +x pre-inst-env])
 
 AC_REQUIRE_AUX_FILE([test-driver.scm])
