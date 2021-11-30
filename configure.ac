@@ -98,4 +98,7 @@ fi
 #  Output
 AC_CONFIG_FILES([Makefile aspell.scm])
 AC_CONFIG_FILES([pre-inst-env], [chmod +x pre-inst-env])
+
+AC_REQUIRE_AUX_FILE([test-driver.scm])
+
 AC_OUTPUT

@@ -42,7 +42,7 @@ GUILE_WARNINGS =                                          \
 
 SUFFIXES = .scm .go
 .scm.go:
-	$(AM_V_GEN)$(top_builddir)/pre-inst-env $(GUILE_TOOLS) compile $(GUILE_TARGET) $(GUILE_WARNINGS) -o "$@" "$<"
+	$(top_builddir)/pre-inst-env $(GUILE_TOOLS) compile $(GUILE_TARGET) $(GUILE_WARNINGS) -o "$@" "$<"
 
 
 ### LINKER ###
@@ -51,15 +51,19 @@ SUFFIXES = .scm .go
 
 ### CHECK ###
 
-# TESTLIB = \
-#	test/lib.scm \
-#	test/lib2.scm
+TESTS = \
+	tests/spell.scm
 
-# TESTS_ENVIRONMENT = GUILE_AUTO_COMPILE=0 \
-#	guile -L $(abs_top_srcdir) -s
+TEST_EXTENSIONS = .scm
 
-# TESTS = \
-#	test/aspell_test.test
+SCM_LOG_DRIVER = \
+  $(top_builddir)/pre-inst-env \
+  $(GUILE) --no-auto-compile \
+      $(top_srcdir)/build-aux/test-driver.scm
+
+# AM_SCM_LOG_FLAGS = --no-auto-compile -L "$(top_srcdir)"
+
+test: check
 
 ### DOCUMENTATION ###
 
@@ -75,10 +79,13 @@ EXTRA_DIST = \
 	README \
 	COPYING \
 	ChangeLog \
+	pre-inst-env.in \
 	aspell.scm.in \
 	doc/fdl-1.3.texi \
 	build-aux/texinfo.tex \
 	build-aux/config.guess \
-	build-aux/config.sub
+	build-aux/config.sub \
+	build-aux/test-driver.scm \
+	$(TESTS)
 
 ### INSTALLATION ###
