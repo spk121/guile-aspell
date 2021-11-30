@@ -1,6 +1,6 @@
 ;; -*- Mode: scheme; -*-
 
-;; Copyright 2009, 2013, 2016, 2017 Michael L Gran
+;; Copyright 2009, 2013, 2016, 2017, 2021 Michael L Gran
 
 ;; This file is part of guile-aspell.
 
@@ -33,7 +33,7 @@
 	    aspell-word
 ))
 
-(define libaspell (dynamic-link "libaspell.so"))
+(define libaspell (dynamic-link "@ASPELL_LIBDIR@/libaspell"))
 
 ;; These are the special type conversions for libaspell
 (define-wrapped-pointer-type AspellCanHaveError

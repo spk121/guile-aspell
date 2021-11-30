@@ -58,6 +58,7 @@ EXTRA_DIST = \
 	README \
 	COPYING \
 	ChangeLog \
+	aspell.scm.in \
 	doc/fdl-1.3.texi \
 	build-aux/texinfo.tex
 
