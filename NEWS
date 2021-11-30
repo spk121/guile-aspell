@@ -1,3 +1,14 @@
+For Release 0.5.0 - Dec 1, 2021
+    - the dependency on gnulib is dropped
+    - aspell.scm is now compiled on installation
+    - the default installation directory for source *.scm files is now
+      $datadir/guile/site/$GUILE_EFFECTIVE_VERSION
+    - the default installation directory for compiled *.go files is now
+      $libdir/guile/$GUILE_EFFECTIVE_VERSION/site-ccache
+    - new configure option '--with-guilecachedir' to set
+      installation directory for compiled files
+    - make distcheck no longer tries to build dvi files
+
 For Release 0.4 - Apr 5, 2017
     - aspell-store-replacement's return value is now unspecified.
     - Document clarifications.
