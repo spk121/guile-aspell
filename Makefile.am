@@ -32,11 +32,6 @@ dist_guilesite_DATA = \
 
 ### OTHER RULES ###
 
-# Gnulib
-distclean-local: clean-GNUmakefile
-clean-GNUmakefile:
-	test '$(srcdir)' = . || rm -f $(top_builddir)/GNUmakefile
-
 ### CHECK ###
 
 # TESTLIB = \
@@ -54,8 +49,6 @@ clean-GNUmakefile:
 info_TEXINFOS = \
 	doc/guile-aspell.texi
 
-SUBDIRS = lib
-
 ### DISTRIBUTION ###
 
 EXTRA_DIST = \
@@ -65,9 +58,7 @@ EXTRA_DIST = \
 	README \
 	COPYING \
 	ChangeLog \
-	m4/gnulib-cache.m4 \
 	doc/fdl-1.3.texi \
-	build-aux/texinfo.tex \
-	cfg.mk
+	build-aux/texinfo.tex
 
 ### INSTALLATION ###

@@ -29,18 +29,8 @@ AC_CONFIG_MACRO_DIR([m4])
 ##################
 # Check for Programs
 
-gl_EARLY
-
 AC_PROG_INSTALL
-
 AC_PROG_MKDIR_P
-
-#################
-# Gnulib stuff
-gl_INIT
-
-# AC_CONFIG_COMMANDS_PRE([m4_ifdef([AH_HEADER],
-#  [AC_SUBST([CONFIG_INCLUDE], m4_defn([AH_HEADER]))])])
 
 ##################
 # Check for libraries
@@ -102,5 +92,5 @@ AC_CHECK_LIB([aspell],
 
 ##################
 #  Output
-AC_CONFIG_FILES([Makefile lib/Makefile])
+AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
