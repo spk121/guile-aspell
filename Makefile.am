@@ -23,10 +23,27 @@ ACLOCAL_AMFLAGS = -I m4
 
 ### MAIN TARGETS ###
 
-dist_guilesite_DATA = \
+### SOURCES ###
+
+SOURCES = \
 	aspell.scm
 
-### SOURCES ###
+GOBJECTS = $(SOURCES:%.scm=%.go)
+
+guilesite_DATA = $(SOURCES)
+guilecache_DATA = $(GOBJECTS)
+CLEANFILES = $(GOBJECTS)
+GUILE_WARNINGS =                                          \
+  -Wunbound-variable -Warity-mismatch -Wshadowed-toplevel \
+  -Wmacro-use-before-definition                           \
+  -Wunused-variable                                       \
+  -Wduplicate-case-datum -Wbad-case-datum                 \
+  -Wformat
+
+SUFFIXES = .scm .go
+.scm.go:
+	$(AM_V_GEN)$(top_builddir)/pre-inst-env $(GUILE_TOOLS) compile $(GUILE_TARGET) $(GUILE_WARNINGS) -o "$@" "$<"
+
 
 ### LINKER ###
 
