@@ -67,16 +67,7 @@ if test "x$guilecachedir" = "x"; then
 fi
 AC_SUBST([guilecachedir])
 
-# PKG_CHECK_MODULES(ASPELL, aspell)
-# AC_SUBST(ASPELL_CFLAGS)
-# AC_SUBST(ASPELL_LIBS)
-
-# On success, this should append -laspell to LIBS and define
-# HAVE_LIBASPELL.
-AC_CHECK_LIB([aspell],
-             [new_aspell_config], ,
-             # if aspell is not ok
-             [AC_MSG_ERROR([libaspell not found])])
+PKG_CHECK_MODULES(ASPELL, aspell)
 
 ##################
 # Check for header files
